@@ -55,7 +55,7 @@ function ResponsiveAppBar() {
             }}
             style={{ cursor: "pointer" }}
           >
-            My Ecommerce Site
+            Time To Eat
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
