@@ -40,7 +40,7 @@ function ResponsiveAppBar() {
       <Container>
         <Toolbar>
           <Typography
-            variant="h6"
+            variant="h3"
             noWrap
             component="a"
             sx={{

@@ -22,12 +22,12 @@ export const CartItemView = ({ item }: Props) => {
   const handleQuantityChange = (qty: number) => {
     const quantity = Number(qty);
     if (quantity >= 1) {
-      updateCartItemQuantity(item.product.id, quantity);
+      updateCartItemQuantity(item.product.productId, quantity);
     }
   };
 
   const handleRemoveClick = () => {
-    removeFromCart(item.product.id);
+    removeFromCart(item.product.productId);
   };
 
   return (
@@ -45,21 +45,21 @@ export const CartItemView = ({ item }: Props) => {
       >
         <Box>
           <Image
-            src={item.product.image}
-            alt={item.product.title}
+            src={item.product.productIcon}
+            alt={item.product.productName}
             width={150}
             height={150}
           />
         </Box>
         <Box>
-          <Typography variant="subtitle1">{item.product.title}</Typography>
+          <Typography variant="subtitle1">{item.product.productName}</Typography>
         </Box>
       </Grid>
       {/* Prooduct Quantity */}
       <Grid alignItems="center" item xs={12} sm={4}>
         <Stack direction="row" spacing={4} alignItems="center">
           <Typography variant="h5">
-            ${(item.product.price * item.quantity).toFixed(2)}
+            ${(item.product.productPrice * item.quantity).toFixed(2)}
           </Typography>
           <Box>
             {/* Icreasing/Deacreasing Product Quantity Button  */}

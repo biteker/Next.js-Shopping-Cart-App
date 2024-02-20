@@ -37,7 +37,7 @@ export const CartView = () => {
         <>
           {/* Listing all items in the cart */}
           {cartItems.map((item: any) => (
-            <Box key={item.product.id} mb={6}>
+            <Box key={item.product.productId} mb={6}>
               <CartItemView item={item} />
             </Box>
           ))}

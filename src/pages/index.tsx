@@ -7,7 +7,7 @@ import ProductsCategories from "@/components/ProductsCategories";
 
 type Props = {
   products: Product[];
-  categories: string[];
+  categories: { id: string; description: string }[];
 };
 
 export default function Home({ products, categories }: Props) {
@@ -33,6 +33,7 @@ export default function Home({ products, categories }: Props) {
         </Typography>
         <ProductsCategories categories={categories} />
         <ProductList products={products} />
+
       </Box>
     </>
   );
@@ -46,7 +47,9 @@ export async function getStaticProps() {
   // Call an external API endpoint to get products.
   // You can use any data fetching library and can also query the database directly.
   const products: Product[] = await getProducts();
-  const categories: string[] = await getCategories();
+  const categories: { id: string; description: string }[] = (await getCategories()).map(category => ({ id: category.id, description: category.description }));
+  console.log(categories);
+  
 
   // By returning { props: { products } }, the Home component
   // will receive `products` as a prop at build time in Production

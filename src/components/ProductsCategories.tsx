@@ -2,8 +2,12 @@ import { Button, Stack } from "@mui/material";
 import React from "react";
 import { useRouter } from "next/router";
 
-type Props = {
+/*type Props = {
   categories: string[];
+};*/
+
+type Props = {
+  categories: { id: string; description: string }[];
 };
 
 const ProductsCategories = ({ categories }: Props) => {
@@ -18,12 +22,12 @@ const ProductsCategories = ({ categories }: Props) => {
     >
       {categories.map((category) => (
         <Button
-          key={category}
+          key={category.id}
           onClick={() => {
-            router.push(`/categories/${category}/products`);
+            router.push(`/categories/${category.id}/products`);
           }}
         >
-          {category}
+          {category.description}
         </Button>
       ))}
     </Stack>

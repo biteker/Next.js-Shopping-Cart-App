@@ -4,8 +4,8 @@ import { CartItem, Product } from "./types";
 interface CartContextValue {
   cartItems: CartItem[];
   addToCart: (product: Product) => void;
-  removeFromCart: (productId: number) => void;
-  updateCartItemQuantity: (productId: number, quantity: number) => void;
+  removeFromCart: (productId: string) => void;
+  updateCartItemQuantity: (productId: string, quantity: number) => void;
   cartTotal: number;
   cartCount: number;
 }
@@ -32,7 +32,7 @@ export const CartProvider = ({ children }: Props) => {
 
   const addToCart = (product: Product) => {
     const existingCartItemIndex = cartItems.findIndex(
-      (item) => item.product.id === product.id
+      (item) => item.product.productId === product.productId
     );
     if (existingCartItemIndex !== -1) {
       const existingCartItem = cartItems[existingCartItemIndex];
@@ -48,16 +48,16 @@ export const CartProvider = ({ children }: Props) => {
     }
   };
 
-  const removeFromCart = (productId: number) => {
+  const removeFromCart = (productId: string) => {
     const updatedCartItems = cartItems.filter(
-      (item) => item.product.id !== productId
+      (item) => item.product.productId !== productId
     );
     setCartItems(updatedCartItems);
   };
 
-  const updateCartItemQuantity = (productId: number, quantity: number) => {
+  const updateCartItemQuantity = (productId: string, quantity: number) => {
     const existingCartItemIndex = cartItems.findIndex(
-      (item) => item.product.id === productId
+      (item) => item.product.productId === productId
     );
     if (existingCartItemIndex !== -1) {
       const existingCartItem = cartItems[existingCartItemIndex];
@@ -72,7 +72,7 @@ export const CartProvider = ({ children }: Props) => {
   };
 
   const cartTotal = cartItems.reduce(
-    (total, item) => total + item.product.price * item.quantity,
+    (total, item) => total + item.product.productPrice * item.quantity,
     0
   );
 

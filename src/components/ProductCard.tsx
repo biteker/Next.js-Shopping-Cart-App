@@ -20,19 +20,19 @@ const ProductCard = ({ product }: Props) => {
   return (
     <Box sx={{ cursor: "pointer" }}>
       <Box
-        onClick={() => router.push(`/products/${product?.id}/product-details`)}
+        onClick={() => router.push(`/products/${product?.productId}/product-details`)}
       >
         <Image
           priority
-          src={product?.image}
-          alt={product?.title}
+          src={product?.productIcon}
+          alt={product?.productName}
           width={300}
           height={300}
         />
-        <Typography variant="h6">{product?.title}</Typography>
-        <Typography variant="subtitle1">{product?.category}</Typography>
+        <Typography variant="h6">{product?.productName}</Typography>
+        <Typography variant="subtitle1">{product?.categoryType}</Typography>
         <Typography variant="subtitle1">
-          ${product?.price?.toFixed(2)}
+          ${product?.productPrice?.toFixed(2)}
         </Typography>
       </Box>
       <Box mt={1}>
