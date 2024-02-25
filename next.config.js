@@ -11,6 +11,7 @@ const nextConfig = {
     'img1.newchic.com',
     'www.thesun.co.uk',
     'starbuckssecretmenu.net',
+    'www.pearsonhighered.com',
     'cdn1.thecomeback.com'
   ],
 },

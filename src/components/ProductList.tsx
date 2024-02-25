@@ -5,6 +5,7 @@ import { type } from "os";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
+
 // ProductList will be passed an Array of Products as Props
 type Props = {
   products: Product[];
@@ -22,6 +23,8 @@ export const ProductList = ({ products }: Props) => {
           </Grid>
         ))}
       </Grid>
+      
+
     </>
   );
 };

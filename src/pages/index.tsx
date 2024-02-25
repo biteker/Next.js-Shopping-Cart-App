@@ -4,13 +4,22 @@ import { getCategories, getProducts } from "../products-service";
 import { Product } from "@/types";
 import { Box, Typography } from "@mui/material";
 import ProductsCategories from "@/components/ProductsCategories";
+import AppPagination from "@/components/Pagination";
+import React from "react";
+import Pagination from '@mui/material/Pagination';
+import { useRouter } from "next/router";
 
 type Props = {
   products: Product[];
   categories: { id: string; description: string }[];
 };
-
 export default function Home({ products, categories }: Props) {
+  const router = useRouter();
+  const page = parseInt(router.query.page as string) || 1;
+
+  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    router.push(`/?page=${value}`);
+  };
   return (
     <>
       <Head>
@@ -33,8 +42,17 @@ export default function Home({ products, categories }: Props) {
         </Typography>
         <ProductsCategories categories={categories} />
         <ProductList products={products} />
-
       </Box>
+
+      <Box
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        minHeight="10vh" // Bu, bileşeni dikey olarak da ortalar
+      >
+        <Pagination count={4} page={page} onChange={handleChange} size="large" color="secondary" />
+      </Box>
+
     </>
   );
 }
@@ -43,10 +61,11 @@ export default function Home({ products, categories }: Props) {
 // It won't be called on client-side, so you can even do
 // direct database queries.
 
-export async function getStaticProps() {
+export async function getServerSideProps(context: { query: { page: string; }; }) {
+  const page = context.query.page ? parseInt(context.query.page) : 1;
   // Call an external API endpoint to get products.
   // You can use any data fetching library and can also query the database directly.
-  const products: Product[] = await getProducts();
+  const products: Product[] = await getProducts(page, 3);
   const categories: { id: string; description: string }[] = (await getCategories()).map(category => ({ id: category.id, description: category.description }));
 
 
