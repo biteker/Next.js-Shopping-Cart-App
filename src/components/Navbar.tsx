@@ -16,7 +16,9 @@ import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import { useRouter } from "next/router";
 import { useCart } from "../CartContext";
 
-const pages = ["Products", "Collections", "Blog", "About us"];
+
+
+const pages = ["About us", "Contact us", "Login", "Register"];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -36,10 +38,26 @@ function ResponsiveAppBar() {
   const { cartCount } = useCart();
 
   return (
-    <AppBar>
+    <AppBar
+    sx={{
+      backgroundColor: '#D0E8F2', 
+    }}>
       <Container>
         <Toolbar>
-          <Typography
+          <img
+            src="/timetoeatlogo.png"
+            alt="Time To Eat"
+            style={{
+              marginRight: "8px",
+              cursor: "pointer",
+              width: "40%", // logo genişliği
+              height: "40%", // logo yüksekliği
+            }}
+            onClick={() => {
+              router.push("/");
+            }}
+          />
+          {/*  <Typography
             variant="h3"
             noWrap
             component="a"
@@ -56,7 +74,7 @@ function ResponsiveAppBar() {
             style={{ cursor: "pointer" }}
           >
             Time To Eat
-          </Typography>
+          </Typography> */}
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
@@ -121,7 +139,7 @@ function ResponsiveAppBar() {
             <Tooltip title="Shopping Cart">
               <IconButton sx={{ p: 0 }}>
                 <Badge badgeContent={cartCount} color="error">
-                  <ShoppingBagOutlinedIcon style={{ color: "white" }} />
+                  <ShoppingBagOutlinedIcon style={{ color: "black" }} />
                 </Badge>
               </IconButton>
             </Tooltip>

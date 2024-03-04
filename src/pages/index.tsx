@@ -38,7 +38,7 @@ export default function Home({ products, categories }: Props) {
           }}
           variant="h2"
         >
-          Product List
+          Menu
         </Typography>
         <ProductsCategories categories={categories} />
         <ProductList products={products} />

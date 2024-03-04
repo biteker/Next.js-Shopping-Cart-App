@@ -14,13 +14,14 @@ export const getProducts = async (page = 1, size = 15) => {
 export const getCategories = async () => {
   //const { data } = await axios.get(`${API_URL}/products/categories`);
   const data = [
-    { id: "0", description: "Ana yemek" },
-    { id: "1", description: "İçecekler" },
-    { id: "2", description: "Tatlılar" }, // Örnek bir açıklama
-    { id: "3", description: "Atıştırmalıklar" }, // Örnek bir açıklama
+    { id: "0", description: "Starter" }, 
+    { id: "1", description: "Main" },
+    { id: "2", description: "Desserts" }, // Örnek bir açıklama
+    { id: "3", description: "Drinks" }, // Örnek bir açıklama
   ];
   return data;
 };
+//meals drinks desserts snacks
 
 // Getting all produts in a specfic category from fake store API
 export const getCategoyProducts = async (categoryName: string) => {
@@ -28,7 +29,7 @@ export const getCategoyProducts = async (categoryName: string) => {
   //  `${API_URL}/products/category/${categoryName}`
   //);
   const { data } = await axios.get(
-    `${API_URL}/category/${categoryName}`
+    `${API_URL}/category/${categoryName}?page=1&size=9`
   );
   return data.page.content;
 };
