@@ -45,7 +45,7 @@ function ResponsiveAppBar() {
       <Container>
         <Toolbar>
           <img
-            src="/timetoeatlogo.png"
+            src="https://res.cloudinary.com/dm9tprq7m/image/upload/v1709586287/TimeToEatlogo_dioszv.png"
             alt="Time To Eat"
             style={{
               marginRight: "8px",
